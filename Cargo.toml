@@ -1,0 +1,13 @@
+[package]
+name = "hello4000"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "hello4000"
+path = "src/main.rs"
+
+[dependencies]
+rocket = { version = "0.5.0-rc.1" }
