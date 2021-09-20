@@ -16,4 +16,6 @@ path = "src/main.rs"
 
 [dependencies]
 gethostname = "0.2.1"
+pfacts = { git = "https://github.com/willfindlay/pfacts-sfw" }
+rand = "0.8.4"
 rocket = { version = "0.5.0-rc.1" }
