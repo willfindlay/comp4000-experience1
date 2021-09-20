@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: MIT
+#
+# Docker file for client-side component of COMP4000 experience 1.
+# Copyright (c) 2021  William Findlay
+#
+# September 16, 2021  William Findlay  Created this.
+
+FROM alpine
+
+# vim:ft=dockerfile

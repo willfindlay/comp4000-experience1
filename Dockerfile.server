@@ -1,3 +1,10 @@
+# SPDX-License-Identifier: MIT
+#
+# Docker file for server-side component of COMP4000 experience 1.
+# Copyright (c) 2021  William Findlay
+#
+# September 16, 2021  William Findlay  Created this.
+
 FROM rust:alpine as builder
 
 RUN apk update
@@ -6,7 +13,7 @@ WORKDIR /app
 
 # Cache build dependencies
 RUN echo "fn main() {}" > dummy.rs
-COPY Cargo.toml .
+COPY server/Cargo.toml .
 RUN sed -i 's#src/main.rs#dummy.rs#' Cargo.toml
 RUN mkdir src && touch src/lib.rs
 RUN cargo build --release
@@ -19,3 +26,5 @@ FROM alpine
 COPY --from=builder /app/target/release/hello4000 /app/hello4000
 
 ENTRYPOINT ["/app/hello4000"]
+
+# vi:ft=dockerfile
