@@ -1,3 +1,10 @@
+// SPDX-License-Identifier: MIT
+//
+// A simple webserver for COMP4000 experience 1.
+// Copyright (c) 2021  William Findlay
+//
+// September 16, 2021  William Findlay  Created this.
+
 use rand::{thread_rng, Rng};
 use rocket::{catch, catchers, get, launch, routes, Config, State};
 
@@ -6,7 +13,7 @@ use hello4000::*;
 #[get("/")]
 async fn index() -> String {
     format!(
-        "Hello k8s world! I am a simple server running on node {}",
+        "Hello k8s world! I am a simple server running on pod {}",
         get_hostname().await
     )
 }
@@ -15,6 +22,12 @@ async fn index() -> String {
 async fn fact(facts: &State<pfacts::Facts>) -> String {
     let i = thread_rng().gen_range(0..facts.len());
     facts[i].clone()
+}
+
+#[get("/crashme")]
+fn crashme() -> String {
+    eprintln!("It's not a bug, it's a feature!");
+    std::process::exit(1);
 }
 
 #[get("/ferris")]
@@ -58,7 +71,9 @@ async fn error404() -> &'static str {
 
 #[launch]
 async fn rocket() -> _ {
-    let figment = Config::figment().merge(("address", "0.0.0.0"));
+    let figment = Config::figment()
+        .merge(("address", "0.0.0.0"))
+        .merge(("port", 4000));
     let facts = pfacts::make();
 
     rocket::custom(figment)
@@ -68,5 +83,5 @@ async fn rocket() -> _ {
         .attach(Counter::default())
         .register("/", catchers![error404])
         .manage(facts)
-        .mount("/", routes![index, ferris, fact, credit])
+        .mount("/", routes![index, ferris, fact, credit, crashme])
 }

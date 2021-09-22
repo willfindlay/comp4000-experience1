@@ -3,8 +3,8 @@ default: run
 
 .PHONY: docker
 docker:
-	docker build $(DOCKER_ARGS) -t 4000server -f Dockerfile.server .
-	docker build $(DOCKER_ARGS) -t 4000client -f Dockerfile.client .
+	docker build $(DOCKER_ARGS) -t comp4000/ex1-server -f Dockerfile.server .
+	docker build $(DOCKER_ARGS) -t comp4000/ex1-client -f Dockerfile.client .
 
 .PHONY: run
 run: docker

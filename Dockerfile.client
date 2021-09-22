@@ -5,6 +5,12 @@
 #
 # September 16, 2021  William Findlay  Created this.
 
-FROM alpine
+FROM busybox
+
+WORKDIR /client
+COPY client/getfacts.sh .
+RUN chmod +x /client/getfacts.sh
+
+ENTRYPOINT ["/client/getfacts.sh"]
 
 # vim:ft=dockerfile
