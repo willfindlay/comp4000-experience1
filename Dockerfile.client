@@ -5,12 +5,17 @@
 #
 # September 16, 2021  William Findlay  Created this.
 
-FROM busybox
+FROM alpine
+
+RUN apk update
+RUN apk add curl
 
 WORKDIR /client
 COPY client/getfacts.sh .
 RUN chmod +x /client/getfacts.sh
 
-ENTRYPOINT ["/client/getfacts.sh"]
+RUN echo 'silent' > "$HOME/.curlrc"
+
+CMD ["sleep", "infinity"]
 
 # vim:ft=dockerfile

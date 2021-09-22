@@ -19,10 +19,10 @@ RUN mkdir src && touch src/lib.rs
 RUN cargo build --release
 RUN sed -i 's#dummy.rs#src/main.rs#' Cargo.toml
 
-COPY . .
+COPY server ./
 RUN cargo build --release
 
-FROM alpine
+FROM busybox
 COPY --from=builder /app/target/release/hello4000 /app/hello4000
 
 ENTRYPOINT ["/app/hello4000"]

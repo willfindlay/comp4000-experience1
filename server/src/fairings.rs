@@ -37,11 +37,7 @@ impl Fairing for Counter {
         let count = self.requests_served.load(Ordering::Relaxed);
 
         if req.method() == Method::Get && req.uri().path() == "/count" {
-            let body = format!(
-                "Requests served from node {}: {}",
-                get_hostname().await,
-                count
-            );
+            let body = format!("Requests served from {}: {}\n", get_hostname().await, count);
             res.set_status(Status::Ok);
             res.set_header(ContentType::Plain);
             res.set_sized_body(body.len(), Cursor::new(body));
