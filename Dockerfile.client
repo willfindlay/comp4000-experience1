@@ -5,16 +5,14 @@
 #
 # September 16, 2021  William Findlay  Created this.
 
-FROM alpine
+FROM alpine as builder
 
+# Install curl
 RUN apk update
 RUN apk add curl
+RUN echo 'silent' > "$HOME/.curlrc"
 
 WORKDIR /client
-COPY client/getfacts.sh .
-RUN chmod +x /client/getfacts.sh
-
-RUN echo 'silent' > "$HOME/.curlrc"
 
 CMD ["sleep", "infinity"]
 

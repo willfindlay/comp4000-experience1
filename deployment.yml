@@ -17,9 +17,8 @@ spec:
         component: server
     spec:
       containers:
-      - image: comp4000/ex1-server
-        name: comp4000server
-        imagePullPolicy: Never
+      - name: comp4000server
+        image: wpfindlay/comp4000-ex1:server-v1
         ports:
         - containerPort: 4000
 
@@ -35,12 +34,10 @@ metadata:
 spec:
   containers:
   - name: comp4000client
+    image: wpfindlay/comp4000-ex1:client-v1
     command:
     - sleep
     - infinity
-    image: comp4000/ex1-client
-    name: comp4000client
-    imagePullPolicy: Never
   restartPolicy: Never
 
 ---
