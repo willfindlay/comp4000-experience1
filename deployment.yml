@@ -18,7 +18,8 @@ spec:
     spec:
       containers:
       - name: comp4000server
-        image: wpfindlay/comp4000-ex1:server-v1
+        image: wpfindlay/comp4000-ex1:server-v2
+        imagePullPolicy: Always
         ports:
         - containerPort: 4000
 
@@ -35,6 +36,7 @@ spec:
   containers:
   - name: comp4000client
     image: wpfindlay/comp4000-ex1:client-v1
+    imagePullPolicy: Always
     command:
     - sleep
     - infinity
@@ -58,20 +60,20 @@ spec:
     port: 80
     targetPort: 4000
 
----
+# ---
 
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: comp4000
-  name: comp4000balancer
-spec:
-  type: LoadBalancer
-  selector:
-    app: comp4000
-    component: server
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 4000
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   labels:
+#     app: comp4000
+#   name: comp4000balancer
+# spec:
+#   type: LoadBalancer
+#   selector:
+#     app: comp4000
+#     component: server
+#   ports:
+#   - protocol: TCP
+#     port: 80
+#     targetPort: 4000

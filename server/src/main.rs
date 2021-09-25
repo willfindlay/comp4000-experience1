@@ -18,7 +18,7 @@ async fn index() -> String {
     )
 }
 
-#[get("/fact")]
+#[get("/printerfacts")]
 async fn fact(facts: &State<pfacts::Facts>) -> String {
     let i = thread_rng().gen_range(0..facts.len());
     format!("New printer fact: {}\n", facts[i])

@@ -1,9 +1,7 @@
 DOCKER_ARGS =
 
-VERSION = v1
-
-SERVER_TAG = wpfindlay/comp4000-ex1:server-$(VERSION)
-CLIENT_TAG = wpfindlay/comp4000-ex1:server-$(VERSION)
+SERVER_TAG = wpfindlay/comp4000-ex1:server-v2
+CLIENT_TAG = wpfindlay/comp4000-ex1:server-v1
 
 .PHONY: default
 default: run
