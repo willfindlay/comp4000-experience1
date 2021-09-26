@@ -3,6 +3,9 @@ DOCKER_ARGS =
 SERVER_TAG = wpfindlay/comp4000-ex1:server-v2
 CLIENT_TAG = wpfindlay/comp4000-ex1:server-v1
 
+MD_FILE = experience1.md
+WIKI_FILE = wiki/experience1.wiki
+
 .PHONY: default
 default: run
 
@@ -24,3 +27,9 @@ deploy:
 .PHONY: delete
 delete:
 	kubectl delete -f deployment.yml
+
+.PHONY: wiki
+wiki: $(WIKI_FILE)
+
+$(WIKI_FILE): $(MD_FILE)
+	pandoc -f markdown -t mediawiki "$(MD_FILE)" > "$(WIKI_FILE)"

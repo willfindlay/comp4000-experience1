@@ -14,6 +14,24 @@ up" each other's answers will be treated as an academic integrity violation**.
 
 [k8s-docs]: https://kubernetes.io/docs/concepts/
 
+## Receiving Your Grade
+
+This experience is broken up into three parts:
+
+1. A series of easy tasks designed to get you familiar with setting up a simple Kubernetes cluster.
+
+2. A harder challenge that involves you deploying your own image in your cluster to
+   interact with a simple API.
+
+3. An opportunity to reflect on your experiences with Kubernetes and make connections to
+   overall themes in the course.
+
+Students are expected to complete Part 1 and Part 3 to get a grade of at most B. Part 2 is
+optional, but must be completed to receive a grade of A- or higher. Marks will be deducted
+for insufficient explanations or answers that demonstrate a lack of effort. By this logic,
+you should have a fairly clear idea of what grade you will receive when you submit this
+experience, based on how much effort you put in.
+
 ## Getting Started
 
 To get started, you will need to run a few commands on your OpenStack course VM to set up
@@ -128,18 +146,23 @@ parts you had difficulty with, any ideas you had that didn't pan out, what ended
 working, and how your deployment fits together with the rest of the cluster.
 
 Points for this question will be awarded based on:
-a) The sophistication of your deployment. (Challenge yourself!)
-b) The quality of your explanation.
+
+a. The sophistication of your deployment. (Challenge yourself!)
+
+b. The quality of your explanation.
 
 Here are some hints to help you get started:
-a) When you are creating your container image, you need to take extra care to ensure
+
+a. When you are creating your container image, you need to take extra care to ensure
    Kubernetes uses your local image. To do this, run `eval $(minikube docker-env)` before
    running any `docker` commands in your shell. In your `deployment.yml`, set
    `imagePullPolicy: Never` under the `container` field to force it to use your local
    image.
-b) You can create a new container image by writing a Dockerfile for it and running `docker
+
+b. You can create a new container image by writing a Dockerfile for it and running `docker
    build -t <name> .` to build it.
-c) You can modify the `deployment.yml` file to create your API object, then re-deploy it
+
+c. You can modify the `deployment.yml` file to create your API object, then re-deploy it
    by running the same `kubectl apply -f` command from earlier. Feel free to copy-paste
    and/or modify any of the existing configuration.
 
