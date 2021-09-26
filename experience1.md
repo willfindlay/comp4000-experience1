@@ -3,7 +3,7 @@
 In this implementation experience, you will be configuring and deploying a simple "hello
 world" Kubernetes cluster using `minikube`. While your cluster is not yet truly
 "distributed", it behaves just as a real Kubernetes cluster would. For more information on
-Kubernetes configuration, you may wish to consult the [k8s-docs][official documentation].
+Kubernetes configuration, you may wish to consult the [official documentation][k8s-docs].
 Links to specific documentation items will also be provided as hints later on in this
 document.
 
@@ -36,7 +36,7 @@ experience, based on how much effort you put in.
 
 To get started, you will need to run a few commands on your OpenStack course VM to set up
 the environment. If you are not yet on OpenStack, please get set up as quickly as possible.
-We have a [openstack][detailed setup guide available] if you need assistance.
+We have a [detailed setup guide available][openstack] if you need assistance.
 
 1. SSH into your VM using your preferred SSH client. Remember that your username and
    password are both `student` by default.
@@ -78,7 +78,7 @@ strictly mean a full understanding; it is okay to have questions!)
    counts as a unique type of object for the purposes of this question.
 
    Hint 2: The command `kubectl api-resources` will enumerate a full list of all supported API
-   objects. You may also wish to consult [object-docs][the relevant documentation] if you
+   objects. You may also wish to consult [the relevant documentation][object-docs] if you
    are stuck.
 
    Hint 3: You may want to have a look at the contents of the `deployment.yml` file.
