@@ -172,3 +172,10 @@ Summarize your experience with Kubernetes in a few paragraphs (both the good and
 What concepts do you see reflected here from the research papers we have read thus far?
 After having some hands on experience with a distributed system technology, have any of
 your opinions or initial assumptions changed? Feel free to list any other thoughts you have.
+
+## Acknowledgements
+
+The idea for the printerfacts API comes from Christine Dodrill's [wonderful blog
+post][dodrill].
+
+[dodrill]: https://christine.website/blog/dev-printerfact-2021-04-17
