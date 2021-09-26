@@ -1,7 +1,7 @@
-DOCKER_ARGS =
+DOCKER_FLAGS =
 
-SERVER_TAG = wpfindlay/comp4000-ex1:server-v2
-CLIENT_TAG = wpfindlay/comp4000-ex1:server-v1
+CLIENT_IMAGE = wpfindlay/comp4000-ex1:client-latest
+SERVER_IMAGE = wpfindlay/comp4000-ex1:server-latest
 
 MD_FILE = experience1.md
 WIKI_FILE = wiki/experience1.wiki
@@ -9,16 +9,15 @@ WIKI_FILE = wiki/experience1.wiki
 .PHONY: default
 default: run
 
-.PHONY: docker
-docker:
-	docker build $(DOCKER_ARGS) -t $(SERVER_TAG) -f Dockerfile.server .
-	docker build $(DOCKER_ARGS) -t $(CLIENT_TAG) -f Dockerfile.client .
-	#@eval $$(minikube docker-env -p 4000) && \
+.PHONY: build
+build:
+	docker build $(DOCKER_FLAGS) -t $(CLIENT_IMAGE) -f Dockerfile.client .
+	docker build $(DOCKER_FLAGS) -t $(SERVER_IMAGE) -f Dockerfile.server .
 
 .PHONY: push
-push: docker
-	docker push $(SERVER_TAG)
-	docker push $(CLIENT_TAG)
+push: build
+	docker push $(CLIENT_IMAGE)
+	docker push $(SERVER_IMAGE)
 
 .PHONY: deploy
 deploy:

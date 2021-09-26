@@ -14,6 +14,16 @@ up" each other's answers will be treated as an academic integrity violation**.
 
 [k8s-docs]: https://kubernetes.io/docs/concepts/
 
+## Submissions
+
+Your experience report should be submitted as a PDF file on Brightspace, written in
+**paragraph form**. Code snippets or screen shots are allowed to augment your prose but
+are not required. We will post a submission link on Brightspace within the next few days.
+
+The experience report is **due on November 2nd, 2021**. However, it may be a good idea to
+get started as quickly as possible, especially if you plan on doing an
+implementation-focused final project.
+
 ## Receiving Your Grade
 
 This experience is broken up into three parts:
@@ -47,7 +57,10 @@ We have a [detailed setup guide available][openstack] if you need assistance.
    you should see some information printed to your terminal as minikube sets up your
    environment. Let the command run to completion.
 
-4. Deploy the experience 1 configuration by running `kubectl apply -f deployment.yml`.
+4. Download the `deployment.yml` file to your VM using `wget
+   https://homeostasis.scs.carleton.ca/~soma/distos/2021f/experiences/deployment.yml`.
+
+5. Deploy the experience 1 configuration by running `kubectl apply -f deployment.yml`.
    This should download some container images and create the necessary Kubernetes API
    objects to run our simple "distributed" application.
 
@@ -115,7 +128,7 @@ strictly mean a full understanding; it is okay to have questions!)
 
 5. Another end point `/count` returns a count of how many GET requests the server has
    processed. Try spamming our `NodePort` with requests to `/count` like `for i in $(seq
-   1 10000); do curl <IP address here>/count; done`. What do you notice about the count
+   1 4000); do curl <IP address here>/count; done`. What do you notice about the count
    for each server? Try to explain what you see.
 
    Hint: Think all the way back to the second question.
